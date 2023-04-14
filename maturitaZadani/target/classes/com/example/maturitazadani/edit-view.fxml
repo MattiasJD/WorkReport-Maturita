@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="467.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.maturitazadani.EditController">
+   <children>
+      <Label layoutX="260.0" layoutY="14.0" text="ADDING" />
+      <Label layoutX="260.0" layoutY="241.0" text="EDITING" />
+      <TextField fx:id="fromText" layoutX="208.0" layoutY="45.0" />
+      <TextField fx:id="toText" layoutX="208.0" layoutY="78.0" />
+      <DatePicker fx:id="datePicker" layoutX="187.0" layoutY="122.0" />
+      <Button layoutX="248.0" layoutY="176.0" mnemonicParsing="false" onAction="#submitChanges" text="Submit" />
+   </children>
+</AnchorPane>
