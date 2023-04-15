@@ -33,9 +33,6 @@ public class WorkReport {
         this.date = date;
     }
 
-    public WorkReport() {
-
-    }
 
     public int getId() {
         return id;

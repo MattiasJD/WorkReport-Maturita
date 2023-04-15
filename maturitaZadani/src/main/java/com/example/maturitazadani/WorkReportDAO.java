@@ -23,16 +23,13 @@ public class WorkReportDAO {
             System.out.println(resultSet.getString("timeFrom"));
         }
     }
-    public static void addWorkReport(LocalTime from, LocalTime to, LocalDate date) throws SQLException {
-        WorkReport workReport = new WorkReport();
-        workReport.setDate(date);
-        workReport.setFrom(from);
-        workReport.setTo(to);
+    public static void addWorkReport(WorkReport workReport) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `vykazy` (`timeFrom`, `timeTo`, `date`) VALUES (? , ? , ?);");
         preparedStatement.setTime(1, Time.valueOf(workReport.getFrom()));
         preparedStatement.setTime(2, Time.valueOf(workReport.getTo()));
         preparedStatement.setDate(3, Date.valueOf(workReport.getDate()));
         preparedStatement.execute();
+        System.out.println("successfully added");
     }
     public static List <WorkReport> getWorkReport() throws SQLException{
         List<WorkReport> workReports = new ArrayList<>();
@@ -47,6 +44,22 @@ public class WorkReportDAO {
             workReports.add(workReport);
         }
         return workReports;
+    }
+    public static void editWorkReport(WorkReport workReport) throws SQLException{
+        System.out.println(workReport.getDate()+"  "+workReport.getTo());
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE `vykazy` SET `timeFrom` = ?, `timeTo` = ?, `date` = ? WHERE `vykazy`.`id` = ?;");
+        preparedStatement.setTime(1, Time.valueOf(workReport.getFrom()));
+        preparedStatement.setTime(2, Time.valueOf(workReport.getTo()));
+        preparedStatement.setDate(3, Date.valueOf(workReport.getDate()));
+        preparedStatement.setInt(4, workReport.getId());
+        preparedStatement.execute();
+        System.out.println("successfully edited");
+    }
+    public static void deleteWorkReport(WorkReport workReport) throws SQLException{
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM vykazy WHERE `vykazy`.`id` = ?");
+        preparedStatement.setInt(1,workReport.getId());
+        preparedStatement.execute();
+        System.out.println("successfully deleted");
     }
 
 

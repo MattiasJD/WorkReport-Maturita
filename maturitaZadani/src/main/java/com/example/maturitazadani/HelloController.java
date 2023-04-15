@@ -34,14 +34,21 @@ public class HelloController implements Initializable {
     @FXML
     public TableColumn<WorkReport, LocalDate> dateColumn;
 
+
     @FXML
     protected void onHelloButtonClick(ActionEvent actionEvent) throws SQLException, IOException {
         HelloApplication.edit();
-        /**
-        Node source = (Node) actionEvent.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-         */
+    }
+
+    public static int calculateHours() throws SQLException {
+        int hours = 0;
+        List<WorkReport> workReports = WorkReportDAO.getWorkReport();
+        for (WorkReport workReport : workReports) {
+            int from = (workReport.getFrom()).getHour();
+            int to = (workReport.getTo()).getHour();
+            hours = hours + (to - from);
+        }
+        return hours;
     }
 
     @Override
@@ -59,7 +66,11 @@ public class HelloController implements Initializable {
         for (WorkReport workReport : workReportList) {
             tableView.getItems().addAll(workReport);
         }
-        labelIDK.setText("You have worked for "+workReportList.size()+" days. And spent "+2+" hours while doing so.");
+        try {
+            labelIDK.setText("You have worked for "+workReportList.size()+" days. And spent "+calculateHours()+" hours while doing so.");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         datePicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
             @Override

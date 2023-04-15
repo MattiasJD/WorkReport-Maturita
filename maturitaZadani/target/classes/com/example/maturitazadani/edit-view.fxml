@@ -5,11 +5,20 @@
 
 <AnchorPane prefHeight="467.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.maturitazadani.EditController">
    <children>
-      <Label layoutX="260.0" layoutY="14.0" text="ADDING" />
-      <Label layoutX="260.0" layoutY="241.0" text="EDITING" />
-      <TextField fx:id="fromText" layoutX="208.0" layoutY="45.0" />
-      <TextField fx:id="toText" layoutX="208.0" layoutY="78.0" />
+      <Label layoutX="252.0" layoutY="14.0" text="ADDING" />
+      <Label layoutX="252.0" layoutY="234.0" text="EDITING" />
+      <TextField fx:id="fromText" layoutX="201.0" layoutY="45.0" />
+      <TextField fx:id="toText" layoutX="201.0" layoutY="76.0" />
       <DatePicker fx:id="datePicker" layoutX="187.0" layoutY="122.0" />
-      <Button layoutX="248.0" layoutY="176.0" mnemonicParsing="false" onAction="#submitChanges" text="Submit" />
+      <Button layoutX="247.0" layoutY="176.0" mnemonicParsing="false" onAction="#submitChanges" text="Submit" />
+      <Button layoutX="248.0" layoutY="428.0" mnemonicParsing="false" onAction="#submitEdit" text="Submit edit" />
+      <ChoiceBox fx:id="choiceBox" layoutX="199.0" layoutY="268.0" prefWidth="150.0" />
+      <Button layoutX="397.0" layoutY="268.0" mnemonicParsing="false" onAction="#submitDelete" text="Delete" />
+      <Label layoutX="46.0" layoutY="385.0" text="time from" />
+      <Label layoutX="199.0" layoutY="385.0" text="time to" />
+      <Label layoutX="373.0" layoutY="385.0" text="date" />
+      <TextField fx:id="fromTextEdit" layoutX="24.0" layoutY="340.0" />
+      <TextField fx:id="toTextEdit" layoutX="187.0" layoutY="340.0" />
+      <DatePicker fx:id="pickedDate" layoutX="354.0" layoutY="340.0" />
    </children>
 </AnchorPane>
